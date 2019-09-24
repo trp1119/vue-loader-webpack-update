@@ -1,0 +1,17 @@
+# 规范编辑器配置
+
+# 指在这个项目里，读 .editconfig 读这个文件就可以了，不必再向上搜索读取
+root = true 
+
+[*]
+charset = utf-8
+# lf 意为换行
+end_of_line = lf
+# tab 键长度为 2 空格
+indent_size = 2
+# 使用空格代替制表符
+indent_style = space
+# 保存文件时默认自动添加空行
+insert_final_newline = true
+# 自动删除每行最后多余空格
+trim_trailing_whitespace = true
