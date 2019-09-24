@@ -1,5 +1,5 @@
 // 自定义的 loader
-const docsLoader = require.resolve('./doc-loader')
+// const docsLoader = require.resolve('./doc-loader')
 
 module.exports = (isDev) => {
   return {
@@ -15,8 +15,8 @@ module.exports = (isDev) => {
 
     cssModules: {
       localIdentName: isDev ? '[path]-[name]-[hash:base64:5]' : '[hash:base64:5]', // 编译出的 class 命名方式，采用 文件路径-文件名-哈希值 方式命名
-      camelCase: true, // 使用小驼峰命名方式添加变量
-    },
+      camelCase: true // 使用小驼峰命名方式添加变量
+    }
 
     // postcss 一般不直接写在配置项中，因为 外面已经有一个 postcss.config.js 配置，在使用 postcss loader 以及 vue 中 postcss时，都可以直接读取外面写的 postcss.config.js，所以这是一个全局的配置，省去了在不同地方使用 postcss 时需要单独配置的问题。所以这里一般不单独配置 postcss。
     // postcss: {},
