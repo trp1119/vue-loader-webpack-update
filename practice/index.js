@@ -11,4 +11,7 @@
 // import './computed'
 
 // Vue 原生指令
-import './directive'
+// import './directive'
+
+// 组件定义
+import './component'
