@@ -28,6 +28,27 @@ import Item from './item.vue'
 import Tabs from './tabs.vue'
 let id = 0
 export default {
+  // 组件内增加钩子
+  beforeRouteEnter (to, from, next) {
+    console.log('beforeRouteEnter', this) // 这时候 this 是 undefined
+    // next(vm => { // 参数为 vm 实例
+    //   console.log(vm.id)
+    // })
+    next()
+  },
+  // beforeRouteUpdate 在同一个组件在不同路由中显示时被触发，即 params 不同， app/123 转到 app/456时触发，123 切换到 456 时是不会触发上面的 beforeRouteEnter 的
+  beforeRouteUpdate (to, from, next) {
+    console.log('beforeRouteUpdate')
+    next()
+  },
+  // beforeRouteLeave 在 beforeEach 前执行
+  beforeRouteLeave (to, from, next) {
+    console.log('beforeRouteLeave')
+    if (global.confirm('are you sure?')) {
+      next()
+    }
+  },
+  // 先是 beforeEach 被触发，然后是路由配置中的 beforeEnter，然后是组件中的 beforeRouteEnter，然后触发 beforeResolve，前面任何地方阻止操作，beforeResolve 都不会被触发，fterEach 最后被触发。
   components: {
     Item,
     Tabs
@@ -39,6 +60,9 @@ export default {
       ],
       filter: 'all'
     }
+  },
+  mounted () {
+    // 相同组件类似路径间切换时，mounted 不会更新，即 /login 到 /app/123 时会触发mounted，而切换到 /app/456 再切换到 /app/123 时，mounted 不再更新。这时，应该使用 beforeRouteUpdate 或 watch，但 watch 不能控制路由跳转行为。
   },
   computed: {
     filteredTodos () {

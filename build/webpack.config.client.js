@@ -19,7 +19,9 @@ const defaultPlugins = [
       NODE_ENV: isDev ? '"development"' : '"production"'
     }
   }),
-  new HTMLPlugin()
+  new HTMLPlugin({
+    template: path.join(__dirname, 'template.html')
+  })
 ]
 
 const devServer = {
@@ -29,9 +31,11 @@ const devServer = {
     errors: true,
   },
   open: true, // 启动 webpack 时自动的打开浏览器
-  // historyFallback: {
-  //   // 将错误地址映射到入口（或定义）地址
-  // },
+  // 不加 historyApiFallback，用户手动刷新页面时会报404
+  historyApiFallback: {
+    // 将错误地址映射到入口（或定义）地址
+    index: '/index.html'
+  },
   hot: true, // 热加载，修改组件只重新渲染页面当前组件效果，不会重新加载网页，保证页面输入数据不丢失
 }
 

@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:client": "cross-env NODE_ENV=production webpack --config build/webpack.config.client.js",
     "build": "yarn clean && yarn build:client",
-    "practice":"cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.practice.js",
+    "practice": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.practice.js",
     "clean": "rimraf dist",
     "lint": "eslint --ext .js --ext .jsx --ext .vue client/",
     "lint-fix": "eslint --fix --ext .js --ext .jsx --ext .vue client/",
@@ -17,9 +17,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-
-
-    "vue": "2.5.13"
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-preset-stage-1": "^6.24.1",
+    "vue": "2.5.13",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "7.2.3",

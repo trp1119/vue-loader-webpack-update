@@ -19,16 +19,17 @@ const config = {
     // filename 正式环境和开发环境是不一样的，开发环境使用 hash，正式环境使用 chunkhash 重新命名。在开发环境使用 chunkhash 会报错。
     filename: 'bundle.[hash:8].js', // 输出文件名
     path: path.join(__dirname, '../dist'), // 输出路径
+    // publicPath: '/public/'
   },
   module: {
     // 配置解析各类文件的 loader
     rules: [
-      {
-        test: /\.(vue|js|jsx)$/,
-        loader: 'eslint-loader', // 只是代码检测，不能处理文件
-        exclude: /node_modules/, // 排除 node_modules 文件夹是因为 node_modules 中有些 js 文件是经过处理的，特别是 babel 处理过的，是 es5 格式，而安装的 standard 插件是处理 es6/es7格式的，不能处理 es5，所以需要排除 node_modules 文件夹。
-        enforce: 'pre' // 预处理，对于指定的 vue|js|jsx 文件，在使用真正的 loader 加载之前，先通过 eslint-loader 处理。pre 是预处理， post 是后处理。
-      },
+      // {
+      //   test: /\.(vue|js|jsx)$/,
+      //   loader: 'eslint-loader', // 只是代码检测，不能处理文件
+      //   exclude: /node_modules/, // 排除 node_modules 文件夹是因为 node_modules 中有些 js 文件是经过处理的，特别是 babel 处理过的，是 es5 格式，而安装的 standard 插件是处理 es6/es7格式的，不能处理 es5，所以需要排除 node_modules 文件夹。
+      //   enforce: 'pre' // 预处理，对于指定的 vue|js|jsx 文件，在使用真正的 loader 加载之前，先通过 eslint-loader 处理。pre 是预处理， post 是后处理。
+      // },
       {
         test: /\.vue$/,
         loader: 'vue-loader',

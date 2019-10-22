@@ -1,8 +1,10 @@
 {
   "presets": [
-    "env"
+    "env",
+    "stage-1"
   ],
   "plugins": [
-    "transform-vue-jsx" // 转化 vue 中的 jsx 代码，vue 中的 jsx 与 react 中的 jsx 有一定区别
+    "transform-vue-jsx", // 转化 vue 中的 jsx 代码，vue 中的 jsx 与 react 中的 jsx 有一定区别
+    "syntax-dynamic-import"
   ]
 }
